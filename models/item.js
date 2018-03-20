@@ -1,0 +1,1 @@
+const mongoose=require("mongoose"),ItemSchema=mongoose.Schema({cat_id:{type:String,required:!0},sub_name:{type:String,required:!0},item_name:{type:String,required:!0},item_price:{type:String,required:!0},item_img:{type:String,required:!0}}),item=module.exports=mongoose.model("Item",ItemSchema);

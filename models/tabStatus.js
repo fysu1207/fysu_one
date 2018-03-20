@@ -1,0 +1,1 @@
+const mongoose=require("mongoose"),bcrypt=require("bcryptjs"),TabStatusSchema=mongoose.Schema({tab:{type:String,required:!0},status:{type:Boolean}}),TabStatus=module.exports=mongoose.model("TabStatus",TabStatusSchema);

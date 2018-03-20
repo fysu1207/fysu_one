@@ -1,0 +1,41 @@
+{
+  "name": "fysu",
+  "version": "1.0.0",
+  "description": "food delivery, office food delivery",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "food",
+    "office",
+    "food",
+    "food",
+    "delivery",
+    "online",
+    "food"
+  ],
+  "author": "Siddhardha",
+  "license": "ISC",
+  "dependencies": {
+    "@types/googlemaps": "^3.26.20",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.1",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-https-redirect": "^1.0.0",
+    "forcedomain": "^0.8.1",
+    "jsonwebtoken": "^8.0.1",
+    "moment": "^2.21.0",
+    "moment-countdown": "0.0.3",
+    "mongoose": "^4.11.11",
+    "nodemon": "^1.14.12",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.0",
+    "razorpay": "^1.6.1",
+    "sendotp": "^1.2.8",
+    "shortid": "^2.2.8"
+  }
+}

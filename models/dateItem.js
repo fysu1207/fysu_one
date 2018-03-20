@@ -1,0 +1,1 @@
+const mongoose=require("mongoose"),DateItemSchema=mongoose.Schema({dateItem:{type:Object,required:!0}}),DateItem=module.exports=mongoose.model("dateItem",DateItemSchema);

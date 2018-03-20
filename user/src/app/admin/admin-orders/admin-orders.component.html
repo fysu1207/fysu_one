@@ -1,0 +1,696 @@
+<!-- Orders Section -->
+<div class="orders-section">
+    <h3>Orders</h3>
+</div>
+  <!-- Orders Listing -->
+  <div class="orders-list-section table-responsive">
+    <!-- Today -->
+      <div class="days-div">
+        <span *ngIf='now_exists == true'>
+        <h2>{{disp_today_one}} (Now)</h2>
+        <table class="table table-striped">
+            <tr>
+              <th>
+                Order Id
+              </th>
+              <th>
+                Order Time
+              </th>
+              <th>
+                User name
+              </th>
+              <th>
+                Mobile
+              </th>
+              <th>
+                Address
+              </th>
+              <th>
+                Items
+              </th>
+              <th>
+                Number of orders
+              </th>
+              <th>
+                Timeslot
+              </th>
+              <th>
+                Payment mode
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+                Notes
+              </th>
+            </tr>
+            <tr *ngFor='let today of today_orders'>
+                <td>
+                   {{today.order_id}}
+                </td>
+                <td>
+                  {{today.order_time}}
+                </td>
+                <td>
+                  {{today.user_name}}
+                </td>
+                <td>
+                  {{today.user_mobile}}
+                </td>
+                <td>
+                  {{today.delivery_address}}
+                </td>
+                <td>
+                  <span *ngFor='let item_det of today.item_dets'>
+                    <p>
+                      {{item_det.name}}
+                    </p>
+                  </span>
+                  <span *ngIf='today.letter_added === "true"'>
+                      Letter added
+                  </span>
+                </td>
+                <td>
+                    <span *ngFor='let item_det of today.item_dets'>
+                      <p>
+                        {{item_det.num_of_items}}
+                      </p>
+                    </span>
+                  </td>
+                <td>
+                  <span *ngFor='let item_det of today.item_dets'>
+                      <p>
+                        {{item_det.time_slot}}
+                      </p>
+                  </span>
+                </td>
+                <td>
+                  {{today.payment_type}}
+                </td>
+                <td>
+                  <div *ngFor='let item of today.item_dets'>
+                    <p>
+                      {{ item.price }}
+                    </p>
+                  </div>
+                  <span>
+                    Redeemed : {{ today.redeemedPrice }} /-
+                  </span>
+                  <span>
+                    Total Price : {{ today.item_dets[0].total_price }}
+                  </span>
+                </td>
+                <td>
+                  {{today.delivery_notes}}
+                </td>
+              </tr>
+          </table>
+    </span>
+      </div>
+    <!-- Today Orders-->
+    <div class="days-div">
+      <h2>{{disp_today_one}} (Today)</h2>
+      <table class="table table-striped">
+        <tr>
+          <th>
+            Order Id
+          </th>
+          <th>
+            Order Time
+          </th>
+          <th>
+            User name
+          </th>
+          <th>
+            Mobile
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            Items
+          </th>
+          <th>
+            Number of orders
+          </th>
+          <th>
+            Timeslot
+          </th>
+          <th>
+            Payment mode
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Notes
+          </th>
+        </tr>
+        <tr *ngFor='let today of today_total_orders'>
+          <td>
+            {{today.order_id}}
+         </td>
+         <td>
+           {{today.order_time}}
+         </td>
+         <td>
+           {{today.user_name}}
+         </td>
+         <td>
+           {{today.user_mobile}}
+         </td>
+         <td>
+           {{today.delivery_address}}
+         </td>
+         <td>
+           <span *ngFor='let itemDet of today.order'>
+             <p>
+                {{ itemDet.item_name }}
+             </p>
+           </span>
+           
+         </td>
+         <td>
+           {{ today.num_of_items }}
+         </td>
+         <td>
+           {{ today.time_slot }}
+         </td>
+         <td>
+           {{today.payment_type}}
+           <span>
+              Redeemed : {{ today.redeemedPrice }} /-
+          </span>
+         </td>
+         <td>
+           {{ today.price }}
+         </td>
+         <td>
+           {{ today.delivery_notes }}
+         </td>
+          </tr>
+      </table>
+    </div>
+    <!-- Day one -->
+    <div class="days-div">
+      <h2>{{p_day_one}}</h2>
+      <table class="table table-striped">
+        <tr>
+          <th>
+            Order Id
+          </th>
+          <th>
+            Order Time
+          </th>
+          <th>
+            User name
+          </th>
+          <th>
+            Mobile
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            Items
+          </th>
+          <th>
+            Number of orders
+          </th>
+          <th>
+            Timeslot
+          </th>
+          <th>
+            Payment mode
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Notes
+          </th>
+        </tr>
+        <tr *ngFor='let day_one of day_one_total_orders'>
+            <td>
+               {{day_one.order_id}}
+            </td>
+            <td>
+              {{day_one.order_time}}
+            </td>
+            <td>
+              {{day_one.user_name}}
+            </td>
+            <td>
+              {{day_one.user_mobile}}
+            </td>
+            <td>
+              {{day_one.delivery_address}}
+            </td>
+            <td>
+              <span *ngFor='let item_det of day_one.order'>
+                <p>
+                  {{ item_det.item_name }}
+                </p>
+              </span>
+            </td>
+            <td>
+              {{ day_one.num_of_items }}
+            </td>
+            <td>
+              {{ day_one.time_slot }}
+            </td>
+            <td>
+              {{day_one.payment_type}}
+            </td>
+            <td>
+              {{ day_one.price }}
+              <span>
+                Redeemed : {{ day_one.redeemedPrice }} /-
+              </span>
+            </td>
+            <td>
+              {{day_one.delivery_notes}}
+            </td>
+          </tr>
+      </table>
+    </div>
+    
+    <!-- Day two -->
+      <div class="days-div">
+        <h2>{{p_day_two}}</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Order Id
+            </th>
+            <th>
+              Order Time
+            </th>
+            <th>
+              User name
+            </th>
+            <th>
+              Mobile
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Items
+            </th>
+            <th>
+              Number of orders
+            </th>
+            <th>
+              Timeslot
+            </th>
+            <th>
+              Payment mode
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Notes
+            </th>
+          </tr>
+          <tr *ngFor='let day_two of day_two_total_orders'>
+              <td>
+                 {{ day_two.order_id }}
+              </td>
+              <td>
+                {{ day_two.order_time }}
+              </td>
+              <td>
+                {{ day_two.user_name }}
+              </td>
+              <td>
+                {{ day_two.user_mobile }}
+              </td>
+              <td>
+                {{ day_two.delivery_address }}
+              </td>
+              <td>
+                <span *ngFor='let item_det of day_two.order'>
+                  <p>
+                    {{item_det.item_name}}
+                  </p>
+                </span>
+              </td>
+              <td>
+                  {{ day_two.num_of_items }}
+              </td>
+              <td>
+                {{ day_two.time_slot }}
+              </td>
+              <td>
+                {{ day_two.payment_type }}
+              </td>
+              <td>
+                {{ day_two.price }}
+                <span>
+                  Redeemed : {{ day_two.redeemedPrice }} /-
+                </span>
+              </td>
+              <td>
+                {{ day_two.delivery_notes }}
+              </td>
+            </tr>
+        </table>
+      </div>
+  
+    <!-- Day three -->
+      <div class="days-div">
+        <h2>{{p_day_three}}</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Order Id
+            </th>
+            <th>
+              Order Time
+            </th>
+            <th>
+              User name
+            </th>
+            <th>
+              Mobile
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Items
+            </th>
+            <th>
+              Number of orders
+            </th>
+            <th>
+              Timeslot
+            </th>
+            <th>
+              Payment mode
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Notes
+            </th>
+          </tr>
+          <tr *ngFor='let day_three of day_three_total_orders'>
+            <td>
+              {{day_three.order_id}}
+           </td>
+           <td>
+             {{day_three.order_time}}
+           </td>
+           <td>
+             {{day_three.user_name}}
+           </td>
+           <td>
+             {{day_three.user_mobile}}
+           </td>
+           <td>
+             {{day_three.delivery_address}}
+           </td>
+           <td>
+             <span *ngFor='let item_det of day_three.order'>
+               <p>
+                 {{item_det.item_name}}
+               </p>
+             </span>
+           </td>
+           <td>
+             {{ day_three.num_of_items }}
+           </td>
+           <td>
+             {{ day_three.time_slot }}
+           </td>
+           <td>
+             {{day_three.payment_type}}
+           </td>
+           <td>
+             {{ day_three.price }}
+             <span>
+                Redeemed : {{ day_three.redeemedPrice }} /-
+              </span>
+           </td>
+           <td>
+             {{day_three.delivery_notes}}
+           </td>
+            </tr>
+        </table>
+      </div>
+  
+    <!-- Day four -->
+      <div class="days-div">
+        <h2>{{p_day_four}}</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Order Id
+            </th>
+            <th>
+              Order Time
+            </th>
+            <th>
+              User name
+            </th>
+            <th>
+              Mobile
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Items
+            </th>
+            <th>
+              Number of orders
+            </th>
+            <th>
+              Timeslot
+            </th>
+            <th>
+              Payment mode
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Notes
+            </th>
+          </tr>
+          <tr *ngFor='let today of day_four_total_orders'>
+            <td>
+              {{today.order_id}}
+           </td>
+           <td>
+             {{today.order_time}}
+           </td>
+           <td>
+             {{today.user_name}}
+           </td>
+           <td>
+             {{today.user_mobile}}
+           </td>
+           <td>
+             {{today.delivery_address}}
+           </td>
+           <td>
+             <span *ngFor='let item_det of today.order'>
+               <p>
+                 {{item_det.item_name}}
+               </p>
+             </span>
+           </td>
+           <td>
+             {{ today.num_of_items }}
+           </td>
+           <td>
+             {{ today.time_slot }}
+           </td>
+           <td>
+             {{today.payment_type}}
+           </td>
+           <td>
+             {{ today.price }}
+             <span>
+                Redeemed : {{ today.redeemedPrice }} /-
+            </span>
+           </td>
+           <td>
+             {{today.delivery_notes}}
+           </td>
+            </tr>
+        </table>
+      </div>
+  
+    <!-- Day five -->
+      <div class="days-div">
+        <h2>{{p_day_five}}</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>
+              Order Id
+            </th>
+            <th>
+              Order Time
+            </th>
+            <th>
+              User name
+            </th>
+            <th>
+              Mobile
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Items
+            </th>
+            <th>
+              Number of orders
+            </th>
+            <th>
+              Timeslot
+            </th>
+            <th>
+              Payment mode
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Notes
+            </th>
+          </tr>
+          <tr *ngFor='let today of day_five_total_orders'>
+            <td>
+              {{today.order_id}}
+           </td>
+           <td>
+             {{today.order_time}}
+           </td>
+           <td>
+             {{today.user_name}}
+           </td>
+           <td>
+             {{today.user_mobile}}
+           </td>
+           <td>
+             {{today.delivery_address}}
+           </td>
+           <td>
+             <span *ngFor='let item_det of today.order'>
+               <p>
+                 {{item_det.item_name}}
+               </p>
+             </span>
+           </td>
+           <td>
+             {{ today.num_of_items }}
+           </td>
+           <td>
+             {{ today.time_slot }}
+           </td>
+           <td>
+             {{today.payment_type}}
+           </td>
+           <td>
+             {{ today.price }}
+             <span>
+                Redeemed : {{ today.redeemedPrice }} /-
+              </span>
+           </td>
+           <td>
+             {{today.delivery_notes}}
+           </td>
+            </tr>
+        </table>
+      </div>
+  </div>
+  
+  <div class="db">
+    <span (click)='closedb()' class="det-close">X</span>
+    <div class="dets-div">
+      <table class="table table-striped">
+        <tr>
+          <th>
+            Order Id
+          </th>
+          <th>
+            User Name
+          </th>
+          <th>
+            User Mobile
+          </th>
+          <th>
+            User Email
+          </th>
+          <th class="address-cell">
+            User Address
+          </th>
+          <th>
+            Ordered Items
+          </th>
+          <th>
+            Number of orders
+          </th>
+          <th>
+            Time slot
+          </th>
+        </tr>
+        <tr>
+          <td>
+             {{p_h_order_id}}
+          </td>
+          <td>
+             {{p_h_user_name}}
+          </td>
+          <td>
+             {{p_h_user_mobile}}
+          </td>
+          <td>
+             {{p_h_user_email}}
+          </td>
+          <td class="address-cell">
+             {{p_h_address}}
+          </td>
+          <td>
+            <span *ngIf="today_active == true">
+              <div *ngFor='let order of p_h_order'>
+                {{order}}
+              </div>
+            </span>
+            <span *ngIf="today_active == false">
+              <div *ngFor='let order of p_h_order'>
+                {{order.item_name}}
+              </div>
+            </span>
+          </td>
+          <td>
+            <span *ngIf="today_active == true">
+              {{  p_h_one_time_slot }}
+              {{  p_h_two_time_slot }}
+              {{  p_h_three_time_slot }}
+            </span>
+            <span *ngIf="today_active == false">
+                {{  p_h_time_slot }}
+            </span>
+          </td>
+          <td>
+            <span *ngIf="today_active == true">
+              {{p_h_tab_one_times}}<br>
+              {{p_h_tab_two_times}}<br>
+              {{p_h_tab_three_times}}<br>
+            </span>
+            <span *ngIf="today_active == false">
+              {{p_h_num_times}}
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,1 @@
+const mongoose=require("mongoose"),OrderSchema=mongoose.Schema({order:{type:Object,required:!0}}),order=module.exports=mongoose.model("Order",OrderSchema);
