@@ -30,8 +30,6 @@ export class CheckoutComponent implements OnInit {
   p_secret = 'lM0HT7rLLHAIguyJIFv0jQ8y';
  // p_secret = 'lM0HT7rLLHAIguyJIFv0jQ8y';
 
-  kevv = 'kevv';
-
   addresses= [];
   userId: string;
   userEmail: string;
@@ -696,10 +694,10 @@ export class CheckoutComponent implements OnInit {
           $('.err').html('Please select a payment method');
         }else {
           // Disabling place order button for valid request
-          $('#place-order-button').prop('disabled', true);
           let pay_method = this.payment_method;
           if (this.payment_method === 'Cash On Delivery') {
             pay_method = 'Cash On Delivery';
+            // $('#place-order-button').prop('disabled', true);
           }
           // Generate Order Id
           // delivery notes
